@@ -9,7 +9,7 @@ class Name:
 
     @declared_attr.directive
     def __tablename__(cls) -> str:
-        return cls.__name__.lower() # ty: ignore[unresolved-attribute]
+        return cls.__name__.lower()  # ty: ignore[unresolved-attribute]
 
     id: Mapped[int] = mapped_column(
         Integer, primary_key=True, autoincrement=True, nullable=False
