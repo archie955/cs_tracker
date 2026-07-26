@@ -18,3 +18,14 @@ class Maps(StrEnum):
     TRAIN = "de_train"
     VERTIGO = "de_vertigo"
     ROOFTOP = "de_rooftop"
+
+
+class MatchTypes(StrEnum):
+    PREMIER = "Premier"
+    FACEIT = "FACEIT"
+    COMP = "Competitive"
+    WINGMAN = "Wingman"
+
+
+class Weapon(StrEnum):  # fill out all weapons
+    KNIFE = "Knife"

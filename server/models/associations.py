@@ -2,8 +2,8 @@ from sqlalchemy import Column, ForeignKey, Table
 
 from database.database import Base
 
-user_wins = Table(
-    "user_wins",
+user_matches = Table(
+    "user_matches",
     Base.metadata,
     Column("user_id", ForeignKey("user.id"), primary_key=True),
     Column("match_id", ForeignKey("match.id"), primary_key=True),
