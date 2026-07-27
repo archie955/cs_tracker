@@ -13,11 +13,15 @@ class User(Base, Name, TimeStamps):
         Index("ix_users_username", "username"),
     )
 
-    username: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
+    username: Mapped[str] = mapped_column(String(100), nullable=False, unique=False)
 
-    url: Mapped[str] = mapped_column(String(200), nullable=False, unique=True)
+    url: Mapped[str] = mapped_column(String(200), nullable=False, unique=False)
 
     steam_id: Mapped[str] = mapped_column(String(200), nullable=False, unique=True)
+
+    steam_auth_code: Mapped[str] = mapped_column(String(100), nullable=True)
+
+    recent_game_code: Mapped[str] = mapped_column(String(100), nullable=True)
 
     premier_rating: Mapped[int] = mapped_column(Integer, nullable=False)
 
