@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     steam_api_key: str
 
     model_config = SettingsConfigDict(
-        env_file=".env.dev", case_sensitive=False, extra="ignore"
+        env_file="./.env.dev", case_sensitive=False, extra="ignore"
     )
 
 

@@ -10,6 +10,7 @@ from database.database import get_db
 from exceptions.app_exceptions import AppException
 from logger.configuration import configure_logging
 from logger.logging_middleware import LoggingMiddleware
+from routers import user
 from utils.config import settings
 
 origins = settings.allowed_origins.split(",")
@@ -29,6 +30,9 @@ app.add_middleware(
 )
 
 app.add_middleware(LoggingMiddleware)
+
+
+app.include_router(user.router)
 
 
 @app.get("/health")

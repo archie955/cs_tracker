@@ -10,9 +10,9 @@ from utils.steam_login import SteamLogin, SteamValidator
 router = APIRouter(prefix="/users", tags=["Users"])
 
 
-@router.post("", status_code=status.HTTP_303_SEE_OTHER, response_model=RedirectResponse)
+@router.get("", status_code=status.HTTP_303_SEE_OTHER, response_class=RedirectResponse)
 def login(request: Request):
-    url = f"{request.url.path}/validatelogin"
+    url = f"{request.url_for('validate_login')}"
     steam = SteamLogin(url)
     return steam.Redirect()
 

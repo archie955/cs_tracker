@@ -19,7 +19,7 @@ class SteamLogin:
     def __init__(self, home_url: str):
         self.__baseurl = "https://steamcommunity.com/openid/login"
         self.__params = {
-            "openid.claimed_id": "https://specs.openid.net/auth/2.0/identifier_select",
+            "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
             "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
             "openid.mode": "checkid_setup",
             "openid.ns": "http://specs.openid.net/auth/2.0",
@@ -62,7 +62,7 @@ class SteamValidator:
         )
 
         for param in string_params:
-            val = data[param]
+            val = data.get(param)
             if not val or not isinstance(val, str):
                 return False
             self.__validationParams[param] = val
@@ -78,11 +78,11 @@ class SteamValidator:
                 k, v = line.split(":", 1)
                 validator[k.strip()] = v.strip()
 
-        if validator["isvalid"] != "true":
+        if validator["is_valid"] != "true":
             return False
 
-        identity = data["openid.identity"]
-        if identity != data["openid.claimed_id"]:
+        identity = data.get("openid.identity")
+        if identity != data.get("openid.claimed_id"):
             return False
 
         prefix = "https://steamcommunity.com/openid/id/"
